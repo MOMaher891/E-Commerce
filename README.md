@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
+## technology used :
+    1.HTML5
+    2.Design (SCSS,Bootstrap,Fontawsome)
+    3.FrameWork(Angular)
+    4.DataBase(FecthAPI)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
