@@ -1,0 +1,19 @@
+<div class="item">
+  <div class="go" routerLink="/product_details/{{data.id}}">
+    <img [src]="data.image" alt="">
+    <div class="body">
+      <h4>{{data.title}}</h4>
+      <p>{{data.description}}</p>
+    </div>
+  </div>
+  <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
+    <span>{{data.price}} L.E</span>
+    <button class="btn btn-success" (click)="addBtn = true" *ngIf="!addBtn" [disabled]="disabled">إضافه
+      الى
+      العربه</button>
+    <div class="d-flex w-50" *ngIf="addBtn">
+      <button class="btn btn-danger" (click)="add()" (click)="addBtn = false">إضافه</button>
+      <input type="text" class="form-control mx-1" placeholder="Num.." [(ngModel)]="amount">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.cartBox {
+  border-radius: 5px;
+  padding: 0 20px;
+
+  table {
+
+    tbody {
+      border-top: 1px solid #c61d21;
+      border-bottom: 1px solid #c61d21;
+
+      tr {
+        td {
+          border-bottom: 0;
+          vertical-align: middle;
+
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}

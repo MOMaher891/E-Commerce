@@ -1,0 +1,152 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="cartBox" style="direction: rtl;">
+  <h1 class="text-danger" style="font-weight: bolder;">المنتجات</h1>
+  <hr>
+  <div class="headCart my-3">
+    <p class="lead">يوجد <strong class="text-danger">{{allProducts.length}}</strong> منتج </p>
+    <div class="deleteAll" style="direction: ltr;"> </div>
+  </div>
+  <div style="direction: ltr;"> <button class="btn btn-success d-flex align-items-center" data-toggle="modal"
+      data-target="#Add"><span class="material-symbols-outlined">add</span>إضافه منتج</button></div>
+
+  <table class="table table-hover" style="border-radius: 50px;">
+    <thead>
+      <tr>
+        <th></th>
+        <th>المنتج</th>
+        <th>الفئه</th>
+        <th>السعر</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor=" let product of allProducts ; let index=index" class="align-items-center">
+        <td><img [src]="product.image" alt=""></td>
+        <td class="w-25">{{product.title}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.price}} جنيه</td>
+        <td></td>
+        <td></td>
+        <td>
+          <div class="from-group d-flex align-items-center justify-content-evenly">
+            <button class="btn btn-success d-flex align-items-center" data-toggle="modal" data-target="#Edit"
+              (click)="update(product)">تعديل<span class="material-symbols-outlined">edit</span></button>
+            <button class="btn btn-danger d-flex align-items-center" (click)="delete(index)">حذف<span
+                class="material-symbols-outlined">delete</span></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Model -->
+<div class="modal fade cartBox" id="Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <app-loading *ngIf="loading"></app-loading>
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 900px !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">إضافه منتج</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="form">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Title</label>
+              <input type="text" name="" id="" class="form-control" placeholder="title" formControlName="title">
+            </div>
+            <div class="col-md-4">
+              <label for="">Price</label>
+              <input type="text" name="" id="" class="form-control" placeholder="price" formControlName="price">
+            </div>
+            <div class="col-md-4">
+              <app-select [data]="allCategories" [title]="'Categories'" (selectedValue)="getCategory($event)"
+                [all]="false"></app-select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Image</label>
+              <img [src]="imageSrc" alt="" style="
+                  width: 100%;
+                  height: 110px;
+                  margin-bottom: 10px;
+                  border-radius: 10px;
+                  object-fit: cover;">
+              <input type="file" name="" id="" class="form-control" (change)="getImageBase64($event)">
+            </div>
+
+            <div class="col-md-8">
+              <label for="">Description</label>
+              <textarea name="" id="" class="form-control" cols="30" rows="5" formControlName="description"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+            <button type="button" class="btn btn-primary" (click)="addProduct()" [disabled]="!form.valid">حفظ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Model -->
+<div class="modal fade cartBox" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <app-loading *ngIf="loading"></app-loading>
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 900px !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">تعديل منتج</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Title</label>
+              <input type="text" name="" id="" class="form-control" placeholder="title" formControlName="title">
+            </div>
+            <div class="col-md-4">
+              <label for="">Price</label>
+              <input type="text" name="" id="" class="form-control" placeholder="price" formControlName="price">
+            </div>
+            <div class="col-md-4">
+              <app-select [data]="allCategories" [title]="'Categories'" (change)="getCategory($event)" [all]="false"
+                [select]="form.value.category"></app-select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Image</label>
+              <img [src]="form.value.image" alt="" style="
+              width: 100%;
+              height: 110px;
+              margin-bottom: 10px;
+              border-radius: 10px;
+              object-fit: contain;">
+              <input type="file" name="" id="" class="form-control" (change)="getImageBase64($event)">
+            </div>
+
+            <div class="col-md-8">
+              <label for="">Description</label>
+              <textarea name="" id="" class="form-control" cols="30" rows="5" formControlName="description"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+        <button type="button" class="btn btn-primary" (click)="updateBtn(form.value.id)">حفظ</button>
+      </div>
+    </div>
+  </div>
+</div>

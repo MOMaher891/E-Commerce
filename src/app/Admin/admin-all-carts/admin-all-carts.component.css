@@ -1,0 +1,22 @@
+.cartBox {
+  border: 1px solid #DDD;
+  margin: 50px 0;
+  border-radius: 5px;
+  padding: 0 20px;
+  box-shadow: 1px 1px 15px #DDD;
+}
+.cartBox table tbody {
+  border-top: 1px solid #c61d21;
+  border-bottom: 1px solid #c61d21;
+}
+.cartBox table tbody tr td {
+  border-bottom: 0;
+  vertical-align: middle;
+}
+.cartBox table tbody tr td img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=admin-all-carts.component.css.map */

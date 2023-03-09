@@ -1,0 +1,23 @@
+body {
+  overflow: hidden;
+}
+
+.box {
+  width: 90%;
+  margin: 100px auto;
+  height: 500px;
+  max-height: 90vh;
+}
+.box ul li {
+  font-size: 16px;
+  margin: 20px 0;
+}
+.box img {
+  width: 100%;
+  min-height: 500px;
+  max-height: 500px;
+  border-radius: 10px;
+  border: none;
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=product-details.component.css.map */

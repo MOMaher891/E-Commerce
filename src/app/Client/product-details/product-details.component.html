@@ -1,0 +1,20 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="box" *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-5 col-sm-12">
+      <img [src]="product_details.image" alt="">
+    </div>
+    <div class="col-md-7 col-sm-12">
+      <div class="info">
+        <ul class="list-unstyled">
+          <li><strong>Title : </strong>{{product_details.title}}</li>
+          <li><strong>Category : </strong>{{product_details.category}}</li>
+          <li><strong>Description : </strong>{{product_details.description}}</li>
+          <li><strong>Rage : </strong>{{product_details.rating.rate}}</li>
+          <li><strong>Count : </strong>{{product_details.rating.count}}</li>
+          <li><strong>Price : </strong>{{product_details.price}} L.E</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

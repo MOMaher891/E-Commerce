@@ -1,0 +1,27 @@
+body {
+  overflow: hidden;
+
+}
+
+.box {
+  width: 90%;
+  margin: 100px auto;
+  height: 500px;
+  max-height: 90vh;
+
+  ul {
+    li {
+      font-size: 16px;
+      margin: 20px 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+    border-radius: 10px;
+    border: none;
+    object-fit: contain;
+  }
+}

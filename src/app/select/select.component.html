@@ -1,0 +1,5 @@
+<label for="" class="my-2 fw-bolder">{{title}} :</label>
+<select name="" id="" class="form-control" (change)="detectChanges($event)">
+  <option value="all" *ngIf="all" selected>All</option>
+  <option *ngFor="let category of data" [value]="category" [selected]="category == select">{{category }}</option>
+</select>

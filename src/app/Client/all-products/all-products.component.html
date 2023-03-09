@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="seleteBox my-5 w-25">
+    <app-select [data]="allCategories" [title]="'Categories'"
+      (selectedValue)="getProductByCategory($event)"></app-select>
+  </div>
+
+  <div class="spinner" *ngIf="loading">
+    <app-loading></app-loading>
+    <div class="loading"></div>
+  </div>
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-3 col-sm-12" *ngFor="let product of allProducts">
+      <app-product [data]="product" (product)="add($event)"></app-product>
+    </div>
+  </div>
+</body>
+
+</html>
